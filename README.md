@@ -1,2 +1,2 @@
 # DroidGolf
-Android mobile application written in Kotlin
+Mobile application for Android written in Kotlin
