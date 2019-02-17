@@ -1,0 +1,147 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "7e0b674bfbcd2c23fb7278c72bf842ba",
+    "entities": [
+      {
+        "tableName": "golfer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`golfer_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `username` TEXT NOT NULL, `firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `age` INTEGER NOT NULL, `gender` TEXT NOT NULL, `height` INTEGER NOT NULL, `weight` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "golfer_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstName",
+            "columnName": "firstname",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastName",
+            "columnName": "lastname",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "height",
+            "columnName": "height",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weight",
+            "columnName": "weight",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "golfer_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "score",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`score_id` INTEGER NOT NULL, `golfer_id` INTEGER NOT NULL, `strokes_per_hole)` TEXT NOT NULL, `putts_per_hole` TEXT NOT NULL, `greens_in_regulation` TEXT NOT NULL, `fairways_hit` TEXT NOT NULL, PRIMARY KEY(`score_id`), FOREIGN KEY(`golfer_id`) REFERENCES `golfer`(`golfer_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "scoreId",
+            "columnName": "score_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "golferId",
+            "columnName": "golfer_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "strokesPerHole",
+            "columnName": "strokes_per_hole)",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "puttsPerHole",
+            "columnName": "putts_per_hole",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "greensInRegulation",
+            "columnName": "greens_in_regulation",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fairwaysHit",
+            "columnName": "fairways_hit",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "score_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_score_golfer_id",
+            "unique": false,
+            "columnNames": [
+              "golfer_id"
+            ],
+            "createSql": "CREATE  INDEX `index_score_golfer_id` ON `${TABLE_NAME}` (`golfer_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "golfer",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "golfer_id"
+            ],
+            "referencedColumns": [
+              "golfer_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7e0b674bfbcd2c23fb7278c72bf842ba\")"
+    ]
+  }
+}
